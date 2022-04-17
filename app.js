@@ -29,6 +29,8 @@ app.use(express.static('public'))
 const handlebars = exphbs.create({ extname: '.hbs',});
 app.engine('.hbs', handlebars.engine);
 app.set('view engine', '.hbs');
+const routes = require('./server/routes/user');
+
 
 
 
