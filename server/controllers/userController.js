@@ -1,9 +1,8 @@
 const mysql = require('mysql');
-// Connection Pool
 const dotenv=require('dotenv');
 const path=require('path');
 dotenv.config({path:'./.env'});
-
+// Connection Pool
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -118,3 +117,22 @@ exports.delete = (req, res) => {
     });
   
   }
+
+  // View Users
+exports.viewall = (req, res) => {
+
+    // User the connection
+    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+      if (!err) {
+        res.render('view-user', { rows });
+      } else {
+        console.log(err);
+      }
+      console.log('The data from user table: \n', rows);
+    });
+  
+  }
+  
+  
+  
+  
