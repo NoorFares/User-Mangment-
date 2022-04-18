@@ -66,7 +66,18 @@ exports.find = (req, res) => {
     });
   }
   
-  
+  // Edit user
+exports.edit = (req, res) => {
+    // User the connection
+    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+      if (!err) {
+        res.render('edit-user.hbs', { rows });
+      } else {
+        console.log(err);
+      }
+      console.log('The data from user table: \n', rows);
+    });
+  }
 
   
   
