@@ -105,4 +105,16 @@ exports.update = (req, res) => {
   }
 
   
+  // Delete User
+exports.delete = (req, res) => {
+    connection.query('UPDATE user SET status = ? WHERE id = ?', ['removed', req.params.id], (err, rows) => {
+      if (!err) {
+        let removedUser = encodeURIComponent('User successeflly removed.');
+        res.redirect('/?removed=' + removedUser);
+      } else {
+        console.log(err);
+      }
+      console.log('The data from beer table are: \n', rows);
+    });
   
+  }
