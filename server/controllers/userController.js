@@ -33,5 +33,19 @@ exports.view = (req, res) => {
       console.log('The data from user table: \n', rows);
     });
   }
+  // Find User by Search
+exports.find = (req, res) => {
+    let searchTerm = req.body.search;
+    // User the connection
+    connection.query('SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?', ['%' + searchTerm + '%', '%' + searchTerm + '%'], (err, rows) => {
+      if (!err) {
+        res.render('home.hbs', { rows });
+      } else {
+        console.log(err);
+      }
+      console.log('The data from user table: \n', rows);
+    });
+  }
+  
   
   
