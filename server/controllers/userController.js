@@ -46,6 +46,27 @@ exports.find = (req, res) => {
       console.log('The data from user table: \n', rows);
     });
   }
+  exports.form = (req, res) => {
+    res.render('add-user.hbs');
+  }
   
+  // Add new user
+  exports.create = (req, res) => {
+    const { first_name, last_name, email, phone, comments } = req.body;
+    let searchTerm = req.body.search;
+  
+    // User the connection
+    connection.query('INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?', [first_name, last_name, email, phone, comments], (err, rows) => {
+      if (!err) {
+        res.render('add-user.hbs', { alert: 'User added successfully.' });
+      } else {
+        console.log(err);
+      }
+      console.log('The data from user table: \n', rows);
+    });
+  }
+  
+  
+
   
   
