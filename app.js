@@ -31,6 +31,7 @@ app.engine('.hbs', handlebars.engine);
 app.set('view engine', '.hbs');
 const routes = require('./server/routes/user');
 
+app.use('/', routes);
 
 
 
