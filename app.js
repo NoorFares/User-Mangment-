@@ -1,7 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();
-const port =process.env.PORT||5001;
+const port =process.env.PORT||5000;
 const mysql=require('mysql');
 const dotenv = require('dotenv');
 
@@ -14,7 +14,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database:'ums'
+  database:'mydatabase1'
 });
 
 db.connect(error => {
