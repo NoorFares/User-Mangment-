@@ -17,6 +17,7 @@ const db = mysql.createConnection({
   database:'mydatabase1'
 });
 
+
 db.connect(error => {
   if(error) {
     console.log(error);
