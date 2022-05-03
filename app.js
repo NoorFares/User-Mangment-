@@ -16,8 +16,6 @@ const db = mysql.createConnection({
   password: '',
   database:'userm'
 });
-
-
 db.connect(error => {
   if(error) {
     console.log(error);
