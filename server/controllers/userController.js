@@ -53,7 +53,7 @@ exports.find = (req, res) => {
   exports.create = (req, res) => {
     const { first_name, last_name, email, phone, comments } = req.body;
     let searchTerm = req.body.search;
-  
+
     // User the connection
     connection.query('INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?', [first_name, last_name, email, phone, comments], (err, rows) => {
       if (!err) {
